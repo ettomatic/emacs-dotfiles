@@ -1,4 +1,5 @@
 (setq prelude-guru nil)
+(menu-bar-mode -1)
 (load-theme 'cyberpunk t)
 
 ;; When opening a new buffer, don't show the scratch message.
@@ -29,6 +30,12 @@
     (newline-and-indent)))
 (global-set-key (kbd "<M-RET>") 'newline-without-break-of-line)
 
+(display-time-mode t)
+
+;;smooth scrolling
+(setq scroll-margin 5
+      scroll-conservatively 9999
+      scroll-step 1)
 
 ;; Swiper search
 (ivy-mode 1)
@@ -49,6 +56,9 @@
 (require 'prelude-helm-everywhere)
 (global-set-key (kbd "C-c h") 'helm-mini)
 (setq helm-autoresize-max-height 10)
+
+;; list all methods in file using Helm
+(global-set-key (kbd "C-c , i") 'helm-imenu)
 
 ;; Golden ratio
 (require 'golden-ratio)
@@ -89,3 +99,17 @@
 (add-hook 'sql-interactive-mode-hook
           (lambda ()
             (toggle-truncate-lines t)))
+
+;; I don't want any delay in suggestions
+(setq company-idle-delay 0)
+
+;; hide minor modes from mode line
+(rich-minority-mode 1)
+(setq rm-whitelist "ruby")
+
+;; a nicer mode line
+(setq sml/theme 'respectful)
+(sml/setup)
+
+;; Emacs please try to keep my code always indented
+;(global-aggressive-indent-mode 1)
