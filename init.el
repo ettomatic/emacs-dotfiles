@@ -80,14 +80,15 @@
                    ,(rx (or "#" "=begin"))                   ; Comment start
                    ruby-forward-sexp nil)))
 
-;;projectile
+;; Projectile
 (persp-mode)
 (require 'persp-projectile)
 (define-key projectile-mode-map (kbd "C-c p c") 'projectile-persp-switch-project)
 
-
+;; Deft
 (setq deft-extension "txt")
 (setq deft-directory (getenv "DEFT"))
+(setq deft-current-sort-method 'title)
 
 ;; mysql
 (setq sql-mysql-login-params
@@ -110,6 +111,3 @@
 ;; a nicer mode line
 (setq sml/theme 'respectful)
 (sml/setup)
-
-;; Emacs please try to keep my code always indented
-;(global-aggressive-indent-mode 1)

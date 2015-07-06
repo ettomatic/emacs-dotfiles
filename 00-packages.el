@@ -4,6 +4,7 @@
                             deft
                             drag-stuff
                             evil
+                            feature-mode
                             flycheck
                             git-gutter
                             git-timemachine

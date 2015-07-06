@@ -18,3 +18,7 @@
 
 ;; Easily toggle ruby's hash syntax
 (require 'ruby-hash-syntax)
+
+;; Cucumber
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
