@@ -19,4 +19,5 @@
                             smart-mode-line
                             swiper
                             undo-tree
+                            vimish-fold
                             ))
