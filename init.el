@@ -1,4 +1,7 @@
 (setq prelude-guru nil)
+(guru-global-mode -1)
+(setq guru-warn-only nil)
+
 (menu-bar-mode -1)
 (load-theme 'cyberpunk t)
 
@@ -16,9 +19,9 @@
 (define-key input-decode-map "\e[1;2A" [S-up])
 
 ;; kill whole line
-(global-set-key [remap kill-whole-line] 'prelude-kill-whole-line)
-(global-set-key [f13] 'prelude-kill-whole-line)
-(global-set-key (kbd "C-c , k") 'prelude-kill-whole-line)
+(global-set-key [remap kill-whole-line] 'crux-kill-whole-line)
+(global-set-key [f13] 'crux-kill-whole-line)
+(global-set-key (kbd "C-c , k") 'crux-kill-whole-line)
 
 ;; newline-without-break-of-line
 (defun newline-without-break-of-line ()
@@ -63,6 +66,9 @@
 ;; Golden ratio
 (require 'golden-ratio)
 (golden-ratio-mode 1)
+(add-to-list 'golden-ratio-extra-commands 'ace-window)
+(add-to-list 'golden-ratio-extra-commands 'avy-goto-word-1)
+(add-to-list 'golden-ratio-extra-commands 'avy-goto-char)
 
 ;; inhibit golden ratio on Helm
 (defun pl/helm-alive-p ()
@@ -156,3 +162,6 @@
         (user-error "No typo at or before point"))))
 (setq save-abbrevs 'silently)
 (setq-default abbrev-mode t)
+
+;; Emacs please try to keep my code always indented
+;(global-aggressive-indent-mode 1)

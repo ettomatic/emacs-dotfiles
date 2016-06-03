@@ -1,5 +1,4 @@
 (prelude-require-packages '(ag
-                            aggressive-indent
                             cyberpunk-theme
                             deft
                             drag-stuff
