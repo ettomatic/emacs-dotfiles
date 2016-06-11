@@ -1,7 +1,9 @@
 (prelude-require-packages '(ag
                             cyberpunk-theme
                             deft
+                            dracula-theme
                             drag-stuff
+                            dumb-jump
                             evil
                             feature-mode
                             flycheck

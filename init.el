@@ -3,7 +3,11 @@
 (setq guru-warn-only nil)
 
 (menu-bar-mode -1)
-(load-theme 'cyberpunk t)
+;; nice themes:
+;; cyberpunk (better on console)
+(load-theme 'dracula t)
+
+(global-linum-mode t)
 
 ;; When opening a new buffer, don't show the scratch message.
 (setq initial-scratch-message "")
@@ -165,3 +169,12 @@
 
 ;; Emacs please try to keep my code always indented
 ;(global-aggressive-indent-mode 1)
+
+
+;; Jump to definition
+(dumb-jump-mode)
+(global-set-key (kbd "C-c , g") 'dumb-jump-go)
+
+
+;; (set-face-background 'vertical-border "gray")
+;; (set-face-foreground 'vertical-border (face-background 'vertical-border))
