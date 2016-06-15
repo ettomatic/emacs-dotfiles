@@ -180,11 +180,6 @@
 ;; Emacs please try to keep my code always indented
 ;(global-aggressive-indent-mode 1)
 
-
 ;; Jump to definition
 (dumb-jump-mode)
 (global-set-key (kbd "C-c , g") 'dumb-jump-go)
-
-
-;; (set-face-background 'vertical-border "gray")
-;; (set-face-foreground 'vertical-border (face-background 'vertical-border))
