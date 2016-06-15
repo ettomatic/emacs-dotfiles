@@ -7,6 +7,16 @@
 ;; cyberpunk (better on console)
 (load-theme 'dracula t)
 
+;; Disable bold fonts
+(set-face-bold-p 'bold nil)
+(mapc
+ (lambda (face)
+   (set-face-attribute face nil :weight 'normal :underline nil))
+ (face-list))
+
+;; Disable the scroll-bar
+(toggle-scroll-bar -1)
+
 (global-linum-mode t)
 
 ;; When opening a new buffer, don't show the scratch message.
