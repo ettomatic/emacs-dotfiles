@@ -1,5 +1,8 @@
 ;;; gutter
 
+;; Disable diff-hl mode
+(global-diff-hl-mode -1)
+
 (global-git-gutter-mode t)
 (custom-set-variables
  '(git-gutter:modified-sign "~")
@@ -7,12 +10,18 @@
  '(git-gutter:deleted-sign "-"))
 (custom-set-variables
  '(git-gutter:hide-gutter t))
-(custom-set-variables '(git-gutter:lighter " GG"))
+;; (custom-set-variables '(git-gutter:lighter " GG"))
+
 ;; Revert current hunk
 (global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
 
 (global-set-key (kbd "C-x <down>") 'git-gutter:next-hunk)
 (global-set-key (kbd "C-x <up>") 'git-gutter:previous-hunk)
+
+;;;; helm-hunks
+
+(global-set-key (kbd "C-c , h") 'helm-hunks)
+
 
 ;;; magit
 

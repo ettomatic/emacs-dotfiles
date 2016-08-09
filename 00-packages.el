@@ -10,11 +10,13 @@
                             git-gutter
                             git-timemachine
                             golden-ratio
+                            helm-hunks
                             persp-projectile
                             rbenv
                             restclient
                             rich-minority
                             rspec-mode
+                            rubocop
                             ruby-hash-syntax
                             ruby-tools
                             smart-mode-line

@@ -17,7 +17,11 @@
 ;; Disable the scroll-bar
 (toggle-scroll-bar -1)
 
-(global-linum-mode t)
+;; Line numbers are noise no?
+(global-linum-mode -1)
+
+;; we are in the XX1 century!
+(setq whitespace-line-column 120)
 
 ;; When opening a new buffer, don't show the scratch message.
 (setq initial-scratch-message "")
@@ -122,6 +126,9 @@
 (add-hook 'sql-interactive-mode-hook
           (lambda ()
             (toggle-truncate-lines t)))
+
+;; Rubocop
+(add-hook 'ruby-mode-hook #'rubocop-mode)
 
 ;; I don't want any delay in suggestions
 (setq company-idle-delay 0)
