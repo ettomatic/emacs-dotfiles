@@ -1,16 +1,23 @@
 (prelude-require-packages '(ag
                             cyberpunk-theme
+                            counsel
+                            counsel-projectile
                             deft
                             dracula-theme
                             drag-stuff
                             dumb-jump
-                            evil
+                            ;;evil
                             feature-mode
                             flycheck
                             git-gutter
                             git-timemachine
                             golden-ratio
-                            helm-hunks
+                            ;helm-hunks
+                            ivy
+                            lua-mode
+                            ;;magithub
+                            multiple-cursors
+                            nginx-mode
                             persp-projectile
                             rbenv
                             restclient

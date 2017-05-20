@@ -58,14 +58,6 @@
       scroll-conservatively 9999
       scroll-step 1)
 
-;; Swiper search
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(global-set-key "\C-s" 'swiper)
-(global-set-key "\C-r" 'swiper)
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-(global-set-key [f6] 'ivy-resume)
-
 ;; ace window
 (global-set-key (kbd "M-p") 'ace-window)
 
@@ -73,13 +65,32 @@
 (drag-stuff-mode t)
 (drag-stuff-global-mode t)
 
-;; helm
-(require 'prelude-helm-everywhere)
-(global-set-key (kbd "C-c h") 'helm-mini)
-(setq helm-autoresize-max-height 10)
 
-;; list all methods in file using Helm
-(global-set-key (kbd "C-c , i") 'helm-imenu)
+;; ivy
+(require 'ivy)
+(ivy-mode 1)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x b") 'ivy-switch-buffer)
+
+;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
+(setq ivy-use-virtual-buffers t)
+;; number of result lines to display
+(setq ivy-height 12)
+;; does not count candidates
+(setq ivy-count-format "")
+;; no regexp by default
+(setq ivy-initial-inputs-alist nil)
+;; configure regexp engine.
+(setq ivy-re-builders-alist
+      ;; allow input not in order
+      '((t   . ivy--regex-ignore-order)))
+
+;; Swiper search
+(setq ivy-use-virtual-buffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key "\C-r" 'swiper)
+(global-set-key (kbd "C-c C-r") 'ivy-resume)
+(global-set-key [f6] 'ivy-resume)
 
 ;; Golden ratio
 (require 'golden-ratio)
@@ -87,12 +98,6 @@
 (add-to-list 'golden-ratio-extra-commands 'ace-window)
 (add-to-list 'golden-ratio-extra-commands 'avy-goto-word-1)
 (add-to-list 'golden-ratio-extra-commands 'avy-goto-char)
-
-;; inhibit golden ratio on Helm
-(defun pl/helm-alive-p ()
-  (if (boundp 'helm-alive-p)
-      (symbol-value 'helm-alive-p)))
-(add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p)
 
 ;; HideShow mode
 (add-hook 'prog-mode-hook 'hs-minor-mode)
@@ -105,9 +110,11 @@
                    ruby-forward-sexp nil)))
 
 ;; Projectile
+(counsel-projectile-on)
 (persp-mode)
 (require 'persp-projectile)
 (define-key projectile-mode-map (kbd "C-c p c") 'projectile-persp-switch-project)
+(setq projectile-completion-system 'ivy)
 
 ;; Deft
 (setq deft-extension "txt")
@@ -189,4 +196,53 @@
 
 ;; Jump to definition
 (dumb-jump-mode)
-(global-set-key (kbd "C-c , g") 'dumb-jump-go)
+;;(global-set-key (kbd "C-c , g") 'dumb-jump-go)
+(global-set-key (kbd "M-g j") 'dumb-jump-go)
+(global-set-key (kbd "M-g x") 'dumb-jump-go-prefer-external)
+(global-set-key (kbd "M-g q") 'dumb-jump-quick-look)
+(setq dumb-jump-default-project "~/code")
+(setq dumb-jump-force-searcher 'ag)
+(setq dumb-jump-selector 'ivy)
+
+(setq circe-network-options
+      '(("bbc"
+         :host "localhost"
+         :port 6668
+         :nick "ettomatic"
+         :channels ("#frameworks" "#operations" "#news")
+         )))
+
+(setq
+ lui-time-stamp-position 'right-margin
+ lui-fill-type nil)
+
+(add-hook 'lui-mode-hook 'my-lui-setup)
+(defun my-lui-setup ()
+  (setq
+   fringes-outside-margins t
+   right-margin-width 12
+   word-wrap t
+   wrap-prefix "     "))
+
+
+;; multiple cursors
+(require 'multiple-cursors)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-m") 'mc/mark-all-like-this)
+
+
+;;;
+;;; Org Mode
+;;;
+(add-to-list 'load-path (expand-file-name "~/Storage/OneDrive/org"))
+(add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
+(require 'org)
+
+(setq org-todo-keywords
+      '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE")))
+;;
+;; Standard key bindings
+;(global-set-key "\C-cl" 'org-store-link)
+;(global-set-key "\C-ca" 'org-agenda)
+;(global-set-key "\C-cb" 'org-iswitchb)
